@@ -1,0 +1,32 @@
+{
+   "name":"shaman",
+   "description":"Application Framework",
+   "version":"0.0.1",
+   "homepage":"http://github.com/wearefractal/shaman",
+   "repository":"git://github.com/wearefractal/shaman.git",
+   "author":"Fractal <contact@wearefractal.com> (http://wearefractal.com/)",
+   "main":"./index.js",
+   
+   "dependencies":{
+      "nconf":"*",
+      "nop":"*",
+      "async":"*",
+      "dependency-graph":"*"
+   },
+   "devDependencies":{
+      "mocha":"*",
+      "should":"*"
+   },
+   "scripts":{
+      "test":"mocha --reporter spec"
+   },
+   "engines":{
+      "node":">= 0.4.0"
+   },
+   "licenses":[
+      {
+         "type":"MIT",
+         "url":"http://github.com/wearefractal/shaman/raw/master/LICENSE"
+      }
+   ]
+}
