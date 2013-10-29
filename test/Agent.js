@@ -73,6 +73,29 @@ describe('Agent', function() {
       done();
     });
 
+    it('should add the sub agents agents to the root', function(done) {
+      var Agent = new shaman.Agent('main');
+      var SubAgent = new shaman.Agent('sub');
+      var SubAgent2 = new shaman.Agent('sub2');
+
+      SubAgent.use(SubAgent2);
+      Agent.use(SubAgent);
+
+      Agent.agent('main').should.equal(Agent, 'root to root');
+      Agent.agent('sub').should.equal(SubAgent, 'root to sub');
+      Agent.agent('sub2').should.equal(SubAgent2, 'root to sub sub');
+
+      SubAgent.agent('main').should.equal(Agent, 'sub to root');
+      SubAgent.agent('sub').should.equal(SubAgent, 'sub to sub');
+      SubAgent.agent('sub2').should.equal(SubAgent2, 'sub to sub sub');
+
+      SubAgent2.agent('main').should.equal(Agent, 'sub sub to root');
+      SubAgent2.agent('sub').should.equal(SubAgent, 'sub sub to sub');
+      SubAgent2.agent('sub2').should.equal(SubAgent2, 'sub sub to sub sub');
+      done();
+    });
+
+
   });
 
 });
